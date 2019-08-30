@@ -1,0 +1,49 @@
+
+/*Login locators*/
+var $_LG_TXT_ENVIRONMENT=_textbox("environmentname");
+var $_LG_TXT_USERNAME = _textbox("username");
+var $_LG_TXT_PASSWORD = _password("password");
+var $_LG_BTN_LOGIN = _span("button-1038-btnEl");
+var $_LG_LNK_LOGOUT = _span("uxcnavitem-1057-btnIconEl");
+var $_LG_ALT_YES=_span("Yes");
+var $_10sec = 10000;
+
+//================================================================================================
+
+/* @Description : Login to the application
+@param : User Name
+@param : Password
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function loginToRTO($un,$pwd)
+{
+
+	_highlight($_LG_TXT_USERNAME);
+	enterValue($_LG_TXT_USERNAME,$un);
+	_highlight($_LG_TXT_PASSWORD);
+	enterValue($_LG_TXT_PASSWORD,$pwd);
+	 buttonClick($_LG_BTN_LOGIN);
+	 
+	
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/* @Description : Logout of the application
+@param : None
+@param : None
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function logoutRTO()
+{
+	buttonClick($_LG_LNK_LOGOUT);
+	_wait($_10sec, _isVisible($_LG_LNK_LOGOUT));
+	buttonClick($_LG_ALT_YES);
+}

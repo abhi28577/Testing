@@ -1,0 +1,104 @@
+
+//--------------------------------------Include Sahi Scripts----------------------------------------------------------------//
+_include("MobileLogin.sah");
+_include("Common.sah");
+_include("MobileHome.sah");
+_include("MobileInspectionPage.sah");
+//------------------------------------------Declare Usrename and Password----------------------------------------------------//
+var  $un = getUsername(6);
+var $pwd = getPassword(7);
+var $url = getURL(4);	
+//------------------------------------------Test Script----------------------------------------------------//
+
+// Navigate to URL
+_navigateTo($url);
+//Login To Mobile application
+loginToMobile($un,$pwd);	
+
+//Click on search facilities and then Click on create company/facility/adhoc inspection
+navigateToMBLScreen("Search Facilities","Create Company/Facility and Adhoc Inspection");
+
+//Enter all mandatory fields in company data
+enterCompanyData("Cloud Sys","Montgomery St.","Sydney","NSW","2216","Albury");
+
+//Enter all mandatory fields in facility data
+enterFacilityData("Vehicle","Animal Food Transport Vehicle","Ashfield","Montgomery St.","Sydney","NSW","2216","12345");	
+
+//Select  Inspection type and checklist type
+selAdhocData("Complaint Investigation","Vehicle/Vessel");
+															
+//Click on "Start Adhoc Inspection" button.
+buttonClick($_MH_BTN_START);
+
+//Verify Page title
+verifyPageTitle($_MEID_SPAN_PAGETITLE,"Enter Inspection Data - Vehicle/Vessel -");		
+
+// Select Project from dropdown																
+selProject("Abattoir Animal Welfare Verification Inspection Program");		
+
+//Add new contact																
+addContact("Peter","Martin");
+
+// Check all the boxes from checklist																	
+acceptChecklist	();
+
+//Select duration and outcome														
+selAdminDetails("1.25","Acceptable","1"	);	
+
+//Signed
+enterSignatureOfficer();
+
+//Select declaration	
+selDeclaratipon("I am of the opinion that the business is being operated in compliance with the regulations and in compliance with the relevant standards.");
+
+//Signature
+enterSignatureRepresentation("Peter Martin");
+
+//Click on Submit button															
+buttonClick($_MEID_BTN_SUBMIT);																	
+															
+//Logout of application
+mobileLogout();	
+															
+
+// Switch to desktop applicatin
+_setMode("WINDOWS")
+_selectWindow();
+// Login to Byte System
+_click(_button("Pivotal CRM"));
+_selectWindow("Smart Client");
+_setSelected(_select("EnvironmentSelector"), "Test (Test)");
+_click(_text("OK"));
+
+//Select Licensing Tab
+_selectWindow("/Smart Client Framework/");
+_click(_tabitem("Licensing"));
+
+//Click on Search for company
+_selectWindow("/Smart Client Framework/");
+_click(_pane("Search for Companies"));
+
+// Select company by enterning the company name
+_selectWindow("Untitled Company Search - Pivotal CRM - Aptean Smart Client Framework");
+_setSelected(_select("_tableComboBox"), "Company");
+_setValue(_textbox("_searchTextBox"),"Cloud Sys");
+_click(_pane("Run Search"));
+
+//Select Company from the search result
+_click(_dataitem("Company Id Row 0"));
+
+//Verify Company Name and address
+_assertEqual("Cloud Sys",_getText( _textbox("Name")));
+
+//Verify Address
+_click(_tabitem("Address"));
+_assertEqual("Montgomery St.",_getText(_textbox("Address")));
+_assertEqual("Sydney",_getSelectedText(_select("_Postal_City69")));
+_assertEqual("NSW",_getText(_textbox("State")));
+_assertEqual("Australia",_getText(_textbox("Country/Region")));			
+_assertEqual("2216",_getText(_textbox("Postcode")));
+
+//Close the window
+_click(_window("License: 45864 - Deb and Syd's T - Pivotal CRM - Aptean Smart Client Framework"));
+
+

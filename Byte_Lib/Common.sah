@@ -1,0 +1,309 @@
+
+var $_10sec = 10000;
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/* 
+@Description : Enters value into the textbox
+@param : Textbox locator
+@param : Value to be entered in the textbox
+@param : If this value is present then the screenshot of the control is taken
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+ function enterValue($txtLocator,$value,$takeScreenShot) 
+{	
+	//var $edtLocator = $locators[$edtName];
+	//_log("[INFO] Edit box locator = " + $edtLocator);
+	_wait($_10sec,_isVisible($txtLocator));
+	_highlight($txtLocator);
+	if ($takeScreenShot != null)
+		_takePageScreenShot($txtLocator);	
+	_setValue($txtLocator, $value);
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/* 
+@Description : Enters value into the textbox
+@param : Window ID
+@param : If this value is present then the screenshot of the control is taken
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+ function selectWindow($windowID,$takeScreenShot) 
+{	
+	//var $edtLocator = $locators[$edtName];
+	//_log("[INFO] Edit box locator = " + $edtLocator);
+	_wait($_10sec,_isVisible($windowID));
+	_highlight($windowID);
+	if ($takeScreenShot != null)
+		_takePageScreenShot($windowID);	
+	    _selectWindow($windowID);
+	
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+/*
+@Description : Select a value from the dropdown
+@param : Listbox locator
+@param : Value to be selected in the Listbox
+@param : If this value is present then the screenshot of the control is taken
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+function selectOption($selectLocator,$option,$takeScreenShot) 
+{
+	//var $lbxLocator = $locators[$lbxName];
+	//_log("[INFO] List box locator = " + $lbxLocator);
+	_wait($_10sec,_isVisible($selectLocator));
+	_highlight($selectLocator);
+	if ($takeScreenShot != null)
+		_takePageScreenShot($selectLocator);	
+	_setSelected($selectLocator, $option);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+/* @Description : Click on a button
+@param : Button locator
+@param : If this value is present then the screenshot of the control is taken
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+function buttonClick($btnLocator,$takeScreenShot) 
+{
+	//var $btnLocator = $locators[$btnName];
+	_log("[INFO] Button locator = " + $btnLocator);
+	_wait($_10sec,_isVisible($btnLocator));
+	if ($takeScreenShot != null)
+		_takePageScreenShot($btnLocator);	
+	//_highlight($btnLocator);
+	_click($btnLocator);
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+/* @Description : Click on a button
+@param : Button locator
+@param : If this value is present then the screenshot of the control is taken
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+function doubleClick($btnLocator,$takeScreenShot) 
+{
+	//var $btnLocator = $locators[$btnName];
+	_log("[INFO] Button locator = " + $btnLocator);
+	_wait($_10sec,_isVisible($btnLocator));
+	if ($takeScreenShot != null)
+		_takePageScreenShot($btnLocator);	
+	//_highlight($btnLocator);
+	_doubleClick($btnLocator);
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+/* 
+@Description : Click on a link
+@param : Link locator
+@param : If this value is present then the screenshot of the control is taken
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+function linkClick($lnkLocator,$takeScreenShot) 
+{
+	//var $btnLocator = $locators[$btnName];
+	_log("[INFO] Link locator = " + $lnkLocator);
+	_wait($_10sec,_isVisible(_link($lnkLocator)));
+	if ($takeScreenShot != null)
+		_takePageScreenShot((_link($lnkLocator)));	
+	//_highlight($btnLocator);
+	_click((_link($lnkLocator)));
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/* 
+@Description : Navigate to screen 
+@param : link to the main screen
+@param : link to subscreen
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+function navigateToScreen($tab,$subTab)
+{
+	if($tab != null)
+	linkClick(_link($tab));
+	if($subTab != null)
+	linkClick(_link($subTab));
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		
+	/*
+@Description :Get a two digit random number
+@param : None
+@return : Two digit random number
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+function maximizeWindow(){
+	_windowAction("maximize");
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+	/*
+@Description :Get a two digit random number
+@param : None
+@return : Two digit random number
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+
+function check($checkbox,$takeScreenShot){
+	if(_condition(!$checkbox.checked)){
+		_log("[INFO] CheckBox locator = " + $checkbox);
+		_wait($_10sec,_isVisible($checkbox));
+		if ($takeScreenShot != null)
+		_takePageScreenShot($checkbox);
+		_check($checkbox);
+
+	}
+	_log("[INFO] CheckBox is Checked = " + $checkbox);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+	/*
+@Description :Get a two digit random number
+@param : None
+@return : Two digit random number
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 3 Aug 2018
+*/
+function unCheck($checkbox,$takeScreenShot){
+	if(_condition($checkbox.checked)){
+		_log("[INFO] CheckBox locator = " + $checkbox);
+		_wait($_10sec,_isVisible($checkbox));
+			if ($takeScreenShot != null)
+		_takePageScreenShot($checkbox);
+		_uncheck($checkbox);
+	}
+	_log("[INFO] CheckBox is unChecked = " + $checkbox);
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+	
+
+	/*
+@Description :Read and verify Page title
+@param : Expected Page Title
+@param : Locator
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date :  Aug 2018
+*/
+function verifyPageTitle($locator,$expectedVal){
+
+		_wait($_10sec,_isVisible($locator));
+		// verifySpanValue($locator,$expectedVal);
+	_assertEqual($expectedVal,_getText($locator));
+
+	}
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* @Description : Gets the config file path
+@param : None
+@param : None
+@return : Path : String
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function getConfigPath()
+{
+	var $path =_scriptPath();
+	_log($path);
+     $path = $path.substring(0, $path.lastIndexOf("Byte_Automation/Byte_Lib/")+25);
+      $path = $path + "Config.csv";
+     _log($path);
+	return $path;
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* @Description : Reads URL from config file
+@param : None
+@param : None
+@return : URL : String
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function getURL($i)
+{
+	var $conPath = getConfigPath();
+	var $config = _readCSVFile($conPath,",",true);		
+	_assertTrue($config[$i][0] == "URL");
+	 var $url = $config[$i][1];
+	return $url;	
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function getTestEnv($i)
+{
+	var $conPath = getConfigPath();
+	var $config = _readCSVFile($conPath,",",true);
+	_assertTrue($config[$i][0] == "Environment");
+     var $env = $config[$i][1];
+     _log("Environment is: " + $env);
+	return $env;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* @Description : Reads the Username from config file
+@param : None
+@param : None
+@return : Username : String
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function getUsername($i)
+{
+	var $conPath = getConfigPath();
+	var $config = _readCSVFile($conPath,",",true);;			
+    _assertTrue($config[$i][0] == "Username");
+    var $user = $config[$i][1];
+    _log("User Name is: " + $user);
+     return $user;
+	
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* @Description : Reads the Password from config file
+@param : None
+@param : None
+@return : Password : String
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function getPassword($i)
+{
+	var $conPath = getConfigPath();
+	var $config = _readCSVFile($conPath,",",true);
+	_assertTrue($config[$i][0] == "Password");
+     var $pass = $config[$i][1];
+     _log("Password is: " + $pass);
+	return $pass;
+}

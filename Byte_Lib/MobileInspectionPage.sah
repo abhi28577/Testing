@@ -1,0 +1,181 @@
+//-------------------------------------------------Enter Inspection Data Properties--------------------------------------------------------------------------------------------------------------//
+var $_MEID_SPAN_PAGETITLE=_heading1("Enter Inspection Data - Vehicle/Vessel -");
+var $_MEID_TXT_PROJECT=_select("projectId");//Abattoir Animal Welfare Verification Inspection Program
+var $_MEID_BTN_ADDCON=_submit("+[1]");
+var $_MEID_TXT_FIRSTNAME=_textbox("firstName");
+var $_MEID_TXT_LASTNAME=_textbox("lastName");
+var $_MEID_RAD_ACC1=_radio("_radio_outcome_0");
+var $_MEID_RAD_YES1=_radio("_radio_outcome_5");
+var $_MEID_RAD_ACC2=_radio("_radio_outcome_1");
+var $_MEID_RAD_YES2=_radio("_radio_outcome_6");
+var $_MEID_RAD_ACC3=_radio("_radio_outcome_2");
+var $_MEID_RAD_YES3=_radio("_radio_outcome_7");
+var $_MEID_RAD_YES4=_radio("_radio_outcome_8");
+var $_MEID_RAD_YES5=_radio("_radio_outcome_9");
+var $_MEID_RAD_YES6=_radio("_radio_outcome_10");
+var $_MEID_RAD_YES7=_radio("_radio_outcome_11");
+var $_MEID_RAD_ACC4=_radio("_radio_outcome_3");
+var $_MEID_RAD_YES8=_radio("_radio_outcome_12");
+var $_MEID_SEL_DURATION=_select("duration");
+var $_MEID_SEL_OUTCOME=_select("inspectionOutcome");
+var $_MEID_TXT_CORECUSTOM=_telephonebox("inspectionScoreCustom");
+var $_MEID_TXT_ACTIONS=_checkbox("toBeInvoiced");
+var $_MEID_BTN_SIGNATURE=_button("signature");
+var $_MEID_TXT_FOODSAFTEYPGM=_select("foodSafetyPrograms");
+var $_MEID_SEL_FACREP=_select("facilityRep");
+var $_MEID_BTN_SIGNATURE1=_button("signature[1]");
+var $_MEID_BTN_SUBMIT=_submit("submit");
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+/* 
+@Description : Select ProjectID
+@param :Project ID
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function selProject($projectID)
+{
+    
+	 _highlight($_MEID_TXT_PROJECT);
+	selectOption($_MEID_TXT_PROJECT,$projectID);
+	
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Create a contact
+@param : First Name
+@param : Last Name
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function addContact($firstName,$lastName)
+{
+    
+	 _highlight($_MEID_BTN_ADDCON);
+	  buttonClick($_MEID_BTN_ADDCON);
+	 _highlight($_MEID_TXT_FIRSTNAME);
+	  enterValue($_MEID_TXT_FIRSTNAME,$firstName);
+	 _highlight($_MEID_TXT_LASTNAME);
+	 enterValue($_MEID_TXT_LASTNAME,$lastName);
+	
+	
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : CheckList
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function acceptChecklist()
+{   
+	_highlight($_MEID_RAD_ACC1);
+	  buttonClick($_MEID_RAD_ACC1);
+	_highlight($_MEID_RAD_YES1);
+	  buttonClick($_MEID_RAD_YES1);
+	_highlight($_MEID_RAD_ACC2);
+	  buttonClick($_MEID_RAD_ACC2);
+	_highlight($_MEID_RAD_YES2);
+	  buttonClick($_MEID_RAD_YES2);
+	_highlight($_MEID_RAD_ACC3);
+	  buttonClick($_MEID_RAD_ACC3);
+	_highlight($_MEID_RAD_YES3);
+	  buttonClick($_MEID_RAD_YES3);
+	_highlight($_MEID_RAD_YES4);
+	  buttonClick($_MEID_RAD_YES4);
+	_highlight($_MEID_RAD_YES5);
+	  buttonClick($_MEID_RAD_YES5);
+	_highlight($_MEID_RAD_YES6);
+	  buttonClick($_MEID_RAD_YES6);
+	_highlight($_MEID_RAD_YES7);
+	  buttonClick($_MEID_RAD_YES7);
+	_highlight($_MEID_RAD_ACC4);
+	  buttonClick($_MEID_RAD_ACC4);
+	_highlight($_MEID_RAD_YES8);
+	  buttonClick($_MEID_RAD_YES8);
+
+	
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Navigate to screen 
+@param : Number of certificates
+@param : Number of certificates
+@param : Number of certificates
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function selAdminDetails($duration,$outcome,$score)
+{
+    
+	 _highlight($_MEID_SEL_DURATION);
+	selectOption($_MEID_SEL_DURATION,$duration);
+	_highlight($_MEID_SEL_OUTCOME);
+	selectOption($_MEID_SEL_OUTCOME,$outcome);
+	 _highlight($_MEID_TXT_CORECUSTOM);
+	 enterValue($_MEID_TXT_CORECUSTOM,$score);
+
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Create signature for officer
+
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function enterSignatureOfficer()
+{
+    
+	 _highlight($_MEID_BTN_SIGNATURE);
+	  buttonClick($_MEID_BTN_SIGNATURE);
+
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Create signature for officer
+
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function enterSignatureRepresentation($name)
+{
+     _highlight($_MEID_SEL_FACREP);
+	selectOption($_MEID_SEL_FACREP,$name);
+	 _highlight($_MEID_BTN_SIGNATURE);
+	  buttonClick($_MEID_BTN_SIGNATURE);
+
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Create signature for officer
+
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function selDeclaratipon($declaration)
+{
+     _highlight($_MEID_TXT_FOODSAFTEYPGM);
+	selectOption($_MEID_TXT_FOODSAFTEYPGM,$declaration);
+	
+
+}

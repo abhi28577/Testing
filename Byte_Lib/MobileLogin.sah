@@ -1,0 +1,48 @@
+
+/*Login locators*/
+var $_MLG_TXT_USERNAME=_textbox("unm");
+var $_MLG_TXT_PASSWORD = _password("pwrd");
+var $_MLG_BTN_LOGIN = _submit("Login");
+var $_MLG_LNK_LOGOUT = _link("Logout");
+var $_MLG_ALT_YES=_span("Yes");
+var $_10sec = 10000;
+
+//================================================================================================
+
+/* @Description : Login to the application
+@param : User Name
+@param : Password
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function loginToMobile($un,$pwd)
+{	
+	
+	_highlight($_MLG_TXT_USERNAME);
+	enterValue($_MLG_TXT_USERNAME,$un);
+	_highlight($_MLG_TXT_PASSWORD);
+	enterValue($_MLG_TXT_PASSWORD,$pwd);
+	 buttonClick($_MLG_BTN_LOGIN);
+	 
+	
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/* @Description : Logout of the application
+@param : None
+@param : None
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 10 Jul 2018
+*/
+function mobileLogout()
+{
+	buttonClick($_MLG_LNK_LOGOUT);
+	_wait($_10sec, _isVisible($_MLG_LNK_LOGOUT));
+
+}

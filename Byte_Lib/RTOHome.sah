@@ -1,0 +1,79 @@
+var $_HOME_BTN_MENU=_span("button-1101-btnIconEl");
+var $_HOME_BTN_BLANKCERT=_div("Order Blank Certificate Stock");
+var $_HOME_BTN_ISSUECERT=_div("Issue Certificate");
+var $_HOME_TXT_CERTIFICATES=_textbox("sliderinput-Quantity");
+var $_HOME_BTN_SUBMIT=_span("Submit");
+var $_HOME_SEL_UNITCOM=_textbox("Unit_of_Competency");
+var $_HOME_TXT_TRAINERNAME=_textbox("Trainer_Id");
+var $_HOME_TXT_REFNUMBER=_textbox("RTO_Reference");
+var $_HOME_CHX_ONLINE=_checkbox("Online_");
+var $_HOME_CHX_FACETOFACE=_checkbox("Face_to_Face");
+var $_HOME_CHX_WORKPLACED=_checkbox("Workplace_Based");
+var $_HOME_CHX_CORRESPONDENCE=_checkbox("Correspondence");
+var $_HOME_SEL_STARTDATE=_textbox("Date_Commenced[1]");
+var $_HOME_SEL_ENDDATE=_span("END DATE[1]");
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+/* 
+@Description : Navigate to screen 
+@param : link to the main screen
+@param : link to subscreen
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+function navigateToScreen($tab,$subTab)
+{
+	if($tab != null)
+	_highlight($tab);
+     buttonClick($tab);
+	if($subTab != null)
+	_highlight($subTab);
+	   buttonClick($subTab);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Navigate to screen 
+@param : Number of certificates
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function getIssueCertificate($unitComp,$trainerName,$refNumber,$startDate,$endDate)
+{
+    
+	 _highlight($_HOME_SEL_UNITCOM);
+	 selectOption($_HOME_TXT_UNITCOM,$unitComp) ;
+	 _highlight($_HOME_TXT_TRAINERNAME);
+	 enterValue($_HOME_TXT_TRAINERNAME,$trainerName);
+	 _highlight($_HOME_TXT_REFNUMBER);
+	 enterValue($_HOME_TXT_REFNUMBER,$refNumber);
+	 check($_HOME_CHX_ONLINE,"takeScreenShot");
+     check($_HOME_CHX_CORRESPONDENCE,"takeScreenShot");
+	 selectOption($_HOME_SEL_STARTDATE,$startDate) ;
+	 selectOption($_HOME_SEL_ENDDATE,$endDate) ;
+
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Navigate to screen 
+@param : Number of certificates
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function getBlankCertificatesOrder($number)
+{
+    
+	 _highlight($_HOME_TXT_CERTIFICATES);
+	 enterValue($_HOME_TXT_CERTIFICATES,$number);
+
+}

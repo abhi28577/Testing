@@ -1,0 +1,128 @@
+var $_MH_LNK_SEARCHFAC=_link("Search Facilities");
+var $_MH_LNK_CREATFAC=_link("Create Company/Facility and Adhoc Inspection");
+var $_MH_TXT_COMPANYNAME=_textbox("companyName");
+var $_MH_TXT_COMPANYADD=_textbox("companyAddress1");
+var $_MH_TXT_MAINCITY=_textbox("companyCity");
+var $_MH_TXT_MAINSTATE=_textbox("companyState");
+var $_MH_TXT_MAINPOSTCODE=_textbox("companyPostcode");
+var $_MH_TXT_COMLGA=_textbox("*Company Name:[15]");
+var $_MH_TXT_FACLGA=_textbox("Facility Type: Fixed Premise Vehicle Vessel Zone");
+var $_MH_TXT_FACADD=_textbox("facilityAddress1");
+var $_MH_TXT_FACCITY=_textbox("facilityCity");
+var $_MH_TXT_FACSTATE=_textbox("facilityState");
+var $_MH_TXT_FACPOST=_textbox("facilityPostcode");
+var $_MH_TXT_FACTYPE=_select("facilityType");
+var $_MH_TXT_FACSUBTYPE=_select("facilitySubType");
+var $_MH_TXT_FACREGNUM=_textbox("facilityRegistrationNumber");
+var $_MH_SEL_INSPECTIONTYPE=_select("inspectionType");
+var $_MH_SEL_INSPECTIONCHXTYPE=_select("inspectionChecklistType");
+var $_MH_BTN_START=_submit("Start Adhoc Inspection");
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+/* 
+@Description : Navigate to screen 
+@param : link to the main screen
+@param : link to subscreen
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+function navigateToMBLScreen($tab,$subTab)
+{
+	if($tab != null)
+	//_highlight($tab);
+    linkClick($tab);
+	if($subTab != null)
+	//_highlight($subTab);
+	linkClick($subTab);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Enter Company Data
+@param : Company Name
+@param : Company Address
+@param : Company City
+@param : Company State
+@param :Company PostCode
+@param : Company LGA
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function enterCompanyData($compName,$add,$city,$state,$postcode,$lga)
+{
+    
+	 _highlight($_MH_TXT_COMPANYNAME);
+	  enterValue($_MH_TXT_COMPANYNAME,$compName) ;
+	 _highlight($_MH_TXT_COMPANYADD);
+	 enterValue($_MH_TXT_COMPANYADD,$add);
+	 _highlight($_MH_TXT_MAINCITY);
+	 enterValue($_MH_TXT_MAINCITY,$city);
+	 _highlight($_MH_TXT_MAINSTATE);
+	 enterValue($_MH_TXT_MAINSTATE,$state);
+	 _highlight($_MH_TXT_MAINPOSTCODE);
+	 enterValue($_MH_TXT_MAINPOSTCODE,$postcode);
+	 _highlight($_MH_TXT_COMLGA);
+	 enterValue($_MH_TXT_COMLGA,$lga);
+	
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Enter Facility Data
+@param : Facility Name
+@param : Facility Address
+@param : Facility City
+@param : Facility State
+@param :Facility PostCode
+@param : Facility LGA
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function enterFacilityData($type,$subtype,$lga,$add,$city,$state,$postcode,$regNum)
+{
+     _highlight($_MH_TXT_FACTYPE);
+	selectOption($_MH_TXT_FACTYPE,$type);
+	 _highlight($_MH_TXT_FACSUBTYPE);
+	selectOption($_MH_TXT_FACSUBTYPE,$subtype);
+ _highlight( $_MH_TXT_FACLGA);
+	 enterValue( $_MH_TXT_FACLGA,$lga);
+	 _highlight($_MH_TXT_FACADD);
+	 enterValue($_MH_TXT_FACADD,$add);
+	 _highlight($_MH_TXT_FACCITY);
+	 enterValue($_MH_TXT_FACCITY,$city);
+	 _highlight($_MH_TXT_FACSTATE);
+	 enterValue($_MH_TXT_FACSTATE,$state);
+	 _highlight($_MH_TXT_FACPOST);
+	 enterValue($_MH_TXT_FACPOST,$postcode);
+	 _highlight($_MH_TXT_FACREGNUM);
+	  enterValue($_MH_TXT_FACREGNUM,$regNum) ;
+	
+	
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+/* 
+@Description : Navigate to screen 
+@param : Number of certificates
+@return : None
+@version :1.0.0.0 
+@author : Priya Solanke
+@created date : 12 Jul 2018
+*/
+
+function selAdhocData($inspectionTyp,$chxLstTyp)
+{
+    
+	 _highlight($_MH_SEL_INSPECTIONTYPE);
+	selectOption($_MH_SEL_INSPECTIONTYPE,$inspectionTyp);
+	_highlight($_MH_SEL_INSPECTIONCHXTYPE);
+	selectOption( $_MH_SEL_INSPECTIONCHXTYPE,$chxLstTyp);
+
+}

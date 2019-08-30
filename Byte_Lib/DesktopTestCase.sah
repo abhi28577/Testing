@@ -1,0 +1,97 @@
+
+_setMode("WINDOWS");
+//login to byte system
+_selectWindow();
+_click(_button("Pivotal CRM"));
+_selectWindow("Smart Client");
+_setSelected(_select("EnvironmentSelector"), "Test (Test)");
+_click(_text("OK"));
+//Select Licensing tab
+_selectWindow("/Smart Client Framework/");
+_click(_tabitem("Licensing"));
+//Go to Sesrch for companies
+_selectWindow("/Smart Client Framework/");
+_click(_pane("Search for Companies"));
+//Select active company
+_selectWindow("/Smart Client Framework/");
+_check(_checkbox("Active"));
+_click(_pane("Run Search"));
+_click(_header("Company Number"));
+_click(_dataitem("Company Id Row 0"));
+_selectWindow("/Company: ANDERSON Peter & ANDERS - Pivotal CRM/ ");
+//click on License for this Company
+_click(_link("License for this Company"));
+_click(_button("Ok"));
+_doubleClick(_dataitem("Category Name Row 3"));
+_click(_pane("Apply"));
+//Add permissions
+_wait(4000);
+_focusWindow();
+_wait(2000);
+_click(_xy(_pane("Refresh"),10,-50));	
+_wait(2000);
+var $robot = new java.awt.Robot();
+$robot.keyPress(java.awt.event.KeyEvent.VK_CONTROL)
+$robot.keyPress(java.awt.event.KeyEvent.VK_ADD);
+$robot.keyRelease(java.awt.event.KeyEvent.VK_ADD);
+$robot.keyRelease(java.awt.event.KeyEvent.VK_CONTROL);
+_setSelected(_select("29034900"), "Abattoir - Non Red Meat");
+_setValue(_pane("/Application_Date/"), "15/08/2018");
+//select the facilities
+_click(_pane("Select/Clear Facility"));
+_click(_radio("Other Facilities for the Licenseholder"));
+_click(_button("OK"));
+_click(_pane("OK"));
+//Click on Activity actions
+_selectWindow("License Permission: 52120: Abatt - Pivotal CRM - Aptean Smart Client Framework");
+_click(_link("Activity Actions"));
+_click(_link("Activity Actions"));
+_click(_button("OK"));
+_click(_pane("OK"));
+//Click on Update Status to Pending
+_click(_link("Update Status to Pending"));
+_click(_pane("Close"));
+_click(_button("No"));
+_click(_button("OK"));
+_click(_pane("Cancel"));
+//Genrate invoice
+_selectWindow("License: 52120 - ANDERSON Peter  - Pivotal CRM - Aptean Smart Client Framework");
+_click(_link("Generate Invoice"));
+_click(_button("OK"));
+_selectWindow("License: 52120 - ANDERSON Peter  - Pivotal CRM - Aptean Smart Client Framework[1]");
+_click(_pane("Cancel"));
+//Click on Issue License
+_selectWindow("License: 52120 - ANDERSON Peter  - Pivotal CRM - Aptean Smart Client Framework");
+_click(_link("Issue License"));
+_click(_button("Yes"));
+_click(_button("Yes"));
+_selectWindow("New Dashboard - Pivotal CRM - Aptean Smart Client Framework");
+_click(_pane("Save & Close"));
+_selectWindow("License: 52120 - ANDERSON Peter  - Pivotal CRM - Aptean Smart Client Framework");
+_click(_button("OK"));
+_setSelected(_select("17172040"), "Complied and Paid");
+_click(_dataitem("Select Row 0"));
+_click(_radio("Approve Anyway"));
+_click(_button("OK"));
+_click(_pane("Save & Close"));
+_click(_button("Continue"));
+_click(_pane("Close"));
+//Genrate the copy
+_selectWindow("Priority Classification Letter   - Pivotal CRM - Aptean Smart Client Framework");
+_click(_button("OK"));
+_selectWindow("New Dashboard - Pivotal CRM - Aptean Smart Client Framework");
+_click(_pane("Ok"));
+_selectWindow("Priority Classification Letter   - Pivotal CRM - Aptean Smart Client Framework");
+_click(_button("Yes"));
+_selectWindow("License  -  - Pivotal CRM - Aptean Smart Client Framework");
+_click(_button("OK"));
+_selectWindow("New Dashboard - Pivotal CRM - Aptean Smart Client Framework");
+_click(_pane("Ok"));
+_selectWindow("License  -  - Pivotal CRM - Aptean Smart Client Framework");
+_click(_button("Yes"));
+_selectWindow("License Extract with Sticker  -  - Pivotal CRM - Aptean Smart Client Framework");
+_click(_button("OK"));
+_selectWindow("New Dashboard - Pivotal CRM - Aptean Smart Client Framework");
+_click(_pane("Ok"));
+//close the window
+_click(_window("License: 52120 - ANDERSON Peter  - Pivotal CRM - Aptean Smart Client Framework"));

@@ -1,0 +1,73 @@
+
+//--------------------------------------Include Sahi Scripts----------------------------------------------------------------//
+_include("RTOLogin.sah");
+_include("Common.sah");
+_include("RTOHome.sah");
+//------------------------------------------Declare Usrename and Password----------------------------------------------------//
+var  $un = getUsername(2);
+var $pwd = getPassword(3);
+var $url = getURL(0);	
+//------------------------------------------Test Script----------------------------------------------------//
+
+// Navigate to URL
+_navigateTo($url);
+
+//Login to pivotal online form using valid credentials
+loginToRTO($un,$pwd);	
+
+//Navigate to 'Order blank certificate stocK
+navigateToScreen($_HOME_BTN_MENU,$_HOME_BTN_BLANKCERT);		
+
+//Enter the number of bank certificates from the drop down
+getBlankCertificatesOrder("150");	
+
+//Click on the submit  to save form
+buttonClick($_HOME_BTN_SUBMIT);
+
+//Logout of application
+logoutRTO();	
+//------------------------------------------------------------SWITCH TO DESKTOP APPLICATION----------------------------------------------------------------------------//
+// Switch to desktop applicatin
+_setMode("WINDOWS")
+_selectWindow();
+
+// Login to Byte System
+_click(_button("Pivotal CRM"));
+_selectWindow("Smart Client");
+_setSelected(_select("EnvironmentSelector"), "Test (Test)");
+_click(_text("OK"));
+
+//Select Licensing Tab
+_selectWindow("/Smart Client Framework/");
+_click(_tabitem("Licensing"));
+
+//Select Licenses Tab
+_selectWindow("/Smart Client Framework/");
+_doubleClick(_pane("Licenses"));
+
+//Enter Licenses number in textbox and  search 
+_selectWindow("Find Licence by Licence# - Pivotal CRM - Aptean Smart Client Framework");
+_setValue(_textbox("License Number"), "45864");
+_click(_pane("Run Search"));
+
+//select the Licenses
+_selectWindow("Find Licence by Licence# - 45864 - Pivotal CRM - Aptean Smart Client Framework");
+_doubleClick(_dataitem("Id Row 0"));
+//_selectWindow("License: 45864 - Deb and Syd's T - Pivotal CRM - Aptean Smart Client Framework");
+//_click(_button("Yes"));
+_selectWindow("License: 45864 - Deb and Syd's T - Pivotal CRM - Aptean Smart Client Framework");
+_click(_button("Less[2]"));
+_click(_button("Less[2]"));
+_click(_button("Less[2]"));
+
+//Verify blank certificates
+var $requestType=_getText(_dataitem("Request Type Row 2"));
+_assertEqual("Certificate Order",$requestType,"Test case Pass");
+var $date=_getText(_dataitem("Date Row 2"));
+_assertEqual($currentDate,$date,"Test case Pass");
+
+//close the application
+_click(_pane("Save & Close"));
+_click(_window("License: 45864 - Deb and Syd's T - Pivotal CRM - Aptean Smart Client Framework"));
+
+
